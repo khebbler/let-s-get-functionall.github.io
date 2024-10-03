@@ -88,7 +88,19 @@ var youngestCustomer = function(array) {
 
 
 
-var averageBalance;
+var averageBalance = function(array) {
+    // iterating through customer's array
+    // finding total of customer's balances
+    let totalBalance = customers.reduce(function(sum, customer){
+        // removing first char ($) replacing commas
+        // converting string to number using unary plus
+        // adding to sum
+        return sum + +customer.balance.slice(1).replace(',', ''); // unary plus operator*
+    }, 0);
+    // returning avegage, diving total by number of customers
+    return totalBalance / customers.length;
+}
+
 
 var firstLetterCount;
 
