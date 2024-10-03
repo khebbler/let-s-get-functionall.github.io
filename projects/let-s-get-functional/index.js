@@ -60,16 +60,31 @@ var femaleCount = function(array) {
 
 var oldestCustomer = function(array) {
     let oldest = _.reduce(array, function(accumulator, current) {
+        // if current age is greater than acc age
         if (current.age > accumulator.age) {
+            // if true return current
             return current;
           }
+          // if false return accumulator
           return accumulator;
     });
-
+    // returning name of oldest customer
     return oldest.name;
 };
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    let youngest = _.reduce(array, function(acc, current) {
+        // checking if current age is less that acc age
+        if (current.age < acc.age) {
+            // if true return current
+            return current;
+        }
+        // if false, return acc
+        return acc;
+    });
+    // returning youngest customer's name
+    return youngest.name;
+}
 
 var averageBalance;
 
