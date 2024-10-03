@@ -102,7 +102,18 @@ var averageBalance = function(array) {
 }
 
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+    // converting letter to lowercase
+    var lowercaseLetter = letter.toLowerCase();
+    // filtering through array of customer objects
+    // checking if first letter matches convereted input letter
+    var firstLetter = array.filter(function(customer) {
+        return customer.name[0].toLowerCase() === lowercaseLetter;
+    });
+    // returning length of array
+    return firstLetter.length;
+
+}
 
 var friendFirstLetterCount;
 
