@@ -86,6 +86,8 @@ var youngestCustomer = function(array) {
     return youngest.name;
 }
 
+
+
 var averageBalance;
 
 var firstLetterCount;
