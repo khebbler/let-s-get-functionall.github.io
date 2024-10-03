@@ -16,18 +16,58 @@ var _ = require('underbar');
  *
  * 4. To test your work, run the following command in your terminal:
  *
- *    npm start --prefix ./let-s-get-functional.github.io/projects/let-s-get-functional
+ *    npm start --prefix ./let-s-get-functionall.github.io/projects/let-s-get-functional
  *
- *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
+ *    IMPORTANT: Make sure you replace <YOUR_GITHUB_npm start --prefix ./let-s-get-functional.github.io/projects/let-s-get-functionalFOLDER with your actual github folder name that is in your workspace.
  */
 
+/*
 var maleCount = function(array) {
+    // initializing storage 
+    var males = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].gender === 'male') {
+            males += 1;
+        }
+    }
+    return males;
+
+};
+*/
+
+var maleCount = function(array) {
+    var males = _.filter(array, function(customer) {
+        return customer.gender === 'male';
+    });
+    return males.length;
+}
+
+
+var femaleCount = function(array) {
+    var females = _.reduce(array, function(acc, current) {
+        // checking if current gender is female
+        if (current.gender === 'female') {
+            // incrementing accumulator
+            return acc + 1;
+        }
+        // returning updated accumulator
+        return acc;
+    }, 0);
+    // returning updated value
+    return females;
 
 };
 
-var femaleCount;
+var oldestCustomer = function(array) {
+    let oldest = _.reduce(array, function(accumulator, current) {
+        if (current.age > accumulator.age) {
+            return current;
+          }
+          return accumulator;
+    });
 
-var oldestCustomer;
+    return oldest.name;
+};
 
 var youngestCustomer;
 
