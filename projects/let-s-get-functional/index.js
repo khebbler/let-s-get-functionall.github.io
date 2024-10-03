@@ -115,7 +115,13 @@ var firstLetterCount = function(array, letter) {
 
 }
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    // converting letter to lowercase
+    var lowercaseLetter = letter.toLowerCase();
+
+    
+
+}
 
 var friendsCount;
 
