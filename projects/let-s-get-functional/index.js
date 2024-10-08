@@ -164,30 +164,32 @@ var friendsCount = function(array, name) {
 }
 
 var topThreeTags = function(array) {
+    // initializing storage object
     var tags = {};
 
-    // Looping through each customer and collect tags
+    // Looping through customers arary
     array.forEach(function(customer) {
+        // Looping through customer's tags
         customer.tags.forEach(function(tag) {
-            // Count occurrences of each tag
+            // if customer has tag
             if (tags[tag]) {
+                // increment count
                 tags[tag]++;
+            // if no tag exists    
             } else {
+                // initialize count
                 tags[tag] = 1;
             }
         });
     });
 
-    // Convert the tagCounts object into an array of [tag, count] pairs
-    var sortedTags = Object.entries(tags).sort(function(a, b) {
-        // Sort by count in descending order
-        return b[1] - a[1];
+    // getting array of tags keys
+    // sorting based on count
+    var topTags = Object.keys(tags).sort(function(a, b) {
+        return tags[b] - tags[a];
     });
-
-    // Extract the top three tags
-    return sortedTags.slice(0, 3).map(function(tag) {
-        return tag[0];
-    });
+    // returning first 3 elements (top 3 tags)
+    return topTags.slice(0, 3);
 
 }
 
