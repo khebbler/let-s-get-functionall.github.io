@@ -116,14 +116,48 @@ var firstLetterCount = function(array, letter) {
 }
 
 var friendFirstLetterCount = function(array, customer, letter) {
+       // initializing storage variable
+    var count = 0;
     // converting letter to lowercase
-    var lowercaseLetter = letter.toLowerCase();
+    var convertedLetter = letter.toLowerCase();
 
-    
-
+    // Looping through array of customers
+    for (var i = 0; i < array.length; i++) {
+        // if customer name is found in array
+        if (array[i].name === customer) {
+            // adding customer's friends to friends variable
+            var friends = array[i].friends;
+            // looping through friends array
+            for (var j = 0; j < friends.length; j++) {
+                // converting first letter of friend's name to lowercase
+                var nameOfFriend = friends[j].name.toLowerCase();
+                // if name of friend is the same as input letter
+                if (nameOfFriend.charAt(0) === convertedLetter) {
+                    // incrementing count
+                    count++;
+                }
+            }
+            break;
+        }
+    }
+    // returning updated count
+    return count;
 }
 
-var friendsCount;
+var friendsCount = function(array, name) {
+    var result = [];
+
+    // Loop through each customer in the array
+    customersArray.forEach(function(customer) {
+        // Check if the customer's friends list contains the given customer's name
+        if (customer.friends && customer.friends.includes(customerName)) {
+            // If yes, add the customer's name to the result array
+            result.push(customer.name);
+        }
+    });
+
+    return result;
+}
 
 var topThreeTags;
 
