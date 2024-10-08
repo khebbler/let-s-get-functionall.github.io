@@ -145,18 +145,22 @@ var friendFirstLetterCount = function(array, customer, letter) {
 }
 
 var friendsCount = function(array, name) {
-    var result = [];
-
-    // Loop through each customer in the array
-    customersArray.forEach(function(customer) {
-        // Check if the customer's friends list contains the given customer's name
-        if (customer.friends && customer.friends.includes(customerName)) {
-            // If yes, add the customer's name to the result array
-            result.push(customer.name);
-        }
-    });
-
-    return result;
+   // initializing storage array
+   var output = [];
+   // Looping through array of customers
+   for (var i = 0; i < array.length; i++) {
+       // Looping through customer's friends
+       for (var j = 0; j < array[i].friends.length; j++) {
+           // if friends name = name
+           if (array[i].friends[j].name === name) {
+               // pushing customer's name into output array
+               output.push(array[i].name);
+               break;
+           }
+       }
+   }
+   // returning updated output
+   return output;
 }
 
 var topThreeTags;
