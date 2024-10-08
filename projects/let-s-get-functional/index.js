@@ -163,9 +163,73 @@ var friendsCount = function(array, name) {
    return output;
 }
 
-var topThreeTags;
+var topThreeTags = function(array) {
+    var tags = {};
 
-var genderCount;
+    // Looping through each customer and collect tags
+    array.forEach(function(customer) {
+        customer.tags.forEach(function(tag) {
+            // Count occurrences of each tag
+            if (tags[tag]) {
+                tags[tag]++;
+            } else {
+                tags[tag] = 1;
+            }
+        });
+    });
+
+    // Convert the tagCounts object into an array of [tag, count] pairs
+    var sortedTags = Object.entries(tags).sort(function(a, b) {
+        // Sort by count in descending order
+        return b[1] - a[1];
+    });
+
+    // Extract the top three tags
+    return sortedTags.slice(0, 3).map(function(tag) {
+        return tag[0];
+    });
+
+}
+
+var genderCount = function(array) {
+    // Looping through array of customers with reduce method
+    return array.reduce(function (accumulator, current){
+        // assigning current customer's gender to gender variable
+        var gender = current.gender;
+
+        // if accumulator doesn't have gender key
+        if (!accumulator[gender]) {
+            // gender count is zero
+            accumulator[gender] = 0;
+        }
+        // if accumulator has gender key
+        accumulator[gender] += 1;
+
+        // returning updated accumulator
+        return accumulator;
+    
+    }, {});
+};
+    
+
+/*
+    return arrayOfCustomers.reduce((acc, customer) => {
+        // Assigning gender from customer object to gender variable
+        var gender = customer.gender;
+
+        // Checking if accumulator contains gender
+        if (!acc[gender]) {
+            // Initializing count for current gender
+            acc[gender] = 0; 
+        }
+        // Incrementing count for current gender
+        acc[gender] += 1;
+        // Returning updated accumulator
+        return acc;
+    }, {});
+        // initial value for accumulator
+};
+*/
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
